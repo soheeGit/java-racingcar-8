@@ -5,18 +5,19 @@ public class RacingGame {
     private final RandomNumberGenerator generator;
     
     public RacingGame(Cars cars, RandomNumberGenerator generator) {
-        this.cars = null;
-        this.generator = null;
+        this.cars = cars;
+        this.generator = generator;
     }
     
     public void playRound() {
+        cars.moveAll(generator);
     }
     
     public Cars getCars() {
-        return null;
+        return cars;
     }
     
     public Winners findWinners() {
-        return null;
+        return cars.findWinners();
     }
 }

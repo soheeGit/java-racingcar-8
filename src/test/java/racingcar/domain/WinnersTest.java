@@ -25,6 +25,6 @@ class WinnersTest {
     @DisplayName("우승자 목록을 반환한다")
     void getWinnerNames() {
         Winners winners = new Winners(List.of("pobi", "woni"));
-        assertThat(winners.getNames()).containsExactly("pobi", "woni");
+        assertThat(winners.names()).containsExactly("pobi", "woni");
     }
 }

@@ -55,6 +55,6 @@ public class RacingGameTest {
         game.playRound();
 
         Winners winners = game.findWinners();
-        assertThat(winners.getNames()).hasSize(2);
+        assertThat(winners.names()).hasSize(2);
     }
 }

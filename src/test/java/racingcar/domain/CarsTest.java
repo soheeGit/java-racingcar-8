@@ -48,7 +48,7 @@ public class CarsTest {
         cars.getCars().get(0).move(4);
 
         Winners winners = cars.findWinners();
-        assertThat(winners.getNames()).containsExactly("pobi");
+        assertThat(winners.names()).containsExactly("pobi");
     }
 
     @Test
@@ -62,7 +62,7 @@ public class CarsTest {
         cars.getCars().get(1).move(5);
 
         Winners winners = cars.findWinners();
-        assertThat(winners.getNames()).containsExactly("pobi", "woni");
+        assertThat(winners.names()).containsExactly("pobi", "woni");
     }
 
     @Test
@@ -72,6 +72,6 @@ public class CarsTest {
         Cars cars = new Cars(names);
 
         Winners winners = cars.findWinners();
-        assertThat(winners.getNames()).containsExactly("pobi", "woni", "jun");
+        assertThat(winners.names()).containsExactly("pobi", "woni", "jun");
     }
 }

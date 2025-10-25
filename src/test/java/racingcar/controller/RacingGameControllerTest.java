@@ -6,6 +6,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.domain.RandomNumberGenerator;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -14,12 +18,20 @@ class RacingGameControllerTest {
     
     private ByteArrayOutputStream outputStream;
     private PrintStream originalOut;
+
+    private InputView inputView;
+    private OutputView outputView;
+    private RandomNumberGenerator generator;
     
     @BeforeEach
     void setUp() {
         outputStream = new ByteArrayOutputStream();
         originalOut = System.out;
         System.setOut(new PrintStream(outputStream));
+
+        inputView = new InputView();
+        outputView = new OutputView();
+        generator = () -> 4;
     }
     
     @AfterEach
@@ -31,7 +43,7 @@ class RacingGameControllerTest {
     @Test
     @DisplayName("컨트롤러를 생성한다")
     void createController() {
-        assertThatCode(() -> new RacingGameController())
+        assertThatCode(() -> new RacingGameController(inputView, outputView, generator))
                 .doesNotThrowAnyException();
     }
     
@@ -41,7 +53,7 @@ class RacingGameControllerTest {
         String input = "pobi,woni,jun\n5\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         
-        RacingGameController controller = new RacingGameController();
+        RacingGameController controller = new RacingGameController(inputView, outputView, generator);
         
         assertThatCode(() -> controller.run())
                 .doesNotThrowAnyException();
@@ -53,7 +65,7 @@ class RacingGameControllerTest {
         String input = "pobi,woni\n3\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         
-        RacingGameController controller = new RacingGameController();
+        RacingGameController controller = new RacingGameController(inputView, outputView, generator);
         controller.run();
         
         String output = outputStream.toString();
@@ -66,7 +78,7 @@ class RacingGameControllerTest {
         String input = "pobi,woni\n3\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         
-        RacingGameController controller = new RacingGameController();
+        RacingGameController controller = new RacingGameController(inputView, outputView, generator);
         controller.run();
         
         String output = outputStream.toString();
@@ -79,7 +91,7 @@ class RacingGameControllerTest {
         String input = "pobi,woni,jun\n3\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         
-        RacingGameController controller = new RacingGameController();
+        RacingGameController controller = new RacingGameController(inputView, outputView, generator);
         controller.run();
         
         String output = outputStream.toString();
@@ -94,7 +106,7 @@ class RacingGameControllerTest {
         String input = "pobi,toolongname\n5\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         
-        RacingGameController controller = new RacingGameController();
+        RacingGameController controller = new RacingGameController(inputView, outputView, generator);
         
         assertThatThrownBy(() -> controller.run())
                 .isInstanceOf(IllegalArgumentException.class);
@@ -106,7 +118,7 @@ class RacingGameControllerTest {
         String input = "pobi,woni\nabc\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         
-        RacingGameController controller = new RacingGameController();
+        RacingGameController controller = new RacingGameController(inputView, outputView, generator);
         
         assertThatThrownBy(() -> controller.run())
                 .isInstanceOf(IllegalArgumentException.class);
@@ -118,7 +130,7 @@ class RacingGameControllerTest {
         String input = "pobi,woni\n0\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         
-        RacingGameController controller = new RacingGameController();
+        RacingGameController controller = new RacingGameController(inputView, outputView, generator);
         
         assertThatThrownBy(() -> controller.run())
                 .isInstanceOf(IllegalArgumentException.class);
@@ -130,7 +142,7 @@ class RacingGameControllerTest {
         String input = "pobi,woni,pobi\n5\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         
-        RacingGameController controller = new RacingGameController();
+        RacingGameController controller = new RacingGameController(inputView, outputView, generator);
         
         assertThatThrownBy(() -> controller.run())
                 .isInstanceOf(IllegalArgumentException.class);
@@ -142,7 +154,7 @@ class RacingGameControllerTest {
         String input = "pobi,,woni\n5\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         
-        RacingGameController controller = new RacingGameController();
+        RacingGameController controller = new RacingGameController(inputView, outputView, generator);
         
         assertThatThrownBy(() -> controller.run())
                 .isInstanceOf(IllegalArgumentException.class);
@@ -154,7 +166,7 @@ class RacingGameControllerTest {
         String input = "pobi\n5\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         
-        RacingGameController controller = new RacingGameController();
+        RacingGameController controller = new RacingGameController(inputView, outputView, generator);
         
         assertThatCode(() -> controller.run())
                 .doesNotThrowAnyException();
@@ -166,7 +178,7 @@ class RacingGameControllerTest {
         String input = "pobi , woni , jun\n3\n";
         System.setIn(new ByteArrayInputStream(input.getBytes()));
         
-        RacingGameController controller = new RacingGameController();
+        RacingGameController controller = new RacingGameController(inputView, outputView, generator);
         
         assertThatCode(() -> controller.run())
                 .doesNotThrowAnyException();

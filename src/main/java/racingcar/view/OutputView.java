@@ -4,7 +4,8 @@ import racingcar.domain.Cars;
 import racingcar.domain.Winners;
 
 public class OutputView {
-    public void printExecutionStart() {
+
+    public void printResultHeader() {
     }
     
     public void printRoundResult(Cars cars) {
