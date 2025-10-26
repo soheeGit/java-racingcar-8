@@ -11,7 +11,7 @@ public class MovingStrategy {
     }
 
     private static void validateRange(int randomNumber) {
-        if (randomNumber <= MIN_NUMBER || randomNumber >= MAX_NUMBER) {
+        if (randomNumber < MIN_NUMBER || randomNumber > MAX_NUMBER) {
             throw new IllegalArgumentException("무작위 값은 0~9 사이여야 합니다.");
         }
     }
