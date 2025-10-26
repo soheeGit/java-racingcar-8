@@ -19,7 +19,7 @@ public class NameTest {
     void throwExceptionWhenNameIsNull() {
         assertThatThrownBy(() -> new Name(null))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("비어있을 수 없습니다");
+                .hasMessageContaining("자동차 이름은 빈 문자열일 수 없습니다.");
     }
 
     @Test
@@ -27,7 +27,7 @@ public class NameTest {
     void throwExceptionWhenNameIsEmpty() {
         assertThatThrownBy(() -> new Name(""))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("비어있을 수 없습니다");
+                .hasMessageContaining("자동차 이름은 빈 문자열일 수 없습니다.");
     }
 
     @Test
@@ -35,7 +35,7 @@ public class NameTest {
     void throwExceptionWhenNameIsBlank() {
         assertThatThrownBy(() -> new Name("   "))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("비어있을 수 없습니다");
+                .hasMessageContaining("자동차 이름은 빈 문자열일 수 없습니다.");
     }
 
     @ParameterizedTest
