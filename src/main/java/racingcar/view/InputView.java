@@ -30,7 +30,11 @@ public class InputView {
     
     private int parseAttemptCount(String input) {
         try {
-            return Integer.parseInt(input);
+            int number = Integer.parseInt(input);
+            if(number <= 0) {
+                throw new IllegalArgumentException("시도 횟수는 양수여야 합니다.");
+            }
+            return number;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다.");
         }
