@@ -1,27 +1,20 @@
 package racingcar.domain;
 
-import java.util.HashSet;
+import racingcar.validator.Validator;
+
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
     
     public Cars(List<String> names) {
-        validateDuplication(names);
+        Validator.validateDuplication(names);
         this.cars = names.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());
     }
 
-    private void validateDuplication(List<String> names) {
-        Set<String> uniqueNames = new HashSet<>(names);
-        if (uniqueNames.size() != names.size()) {
-            throw new IllegalArgumentException("중복된 자동차 이름이 존재합니다.");
-        }
-    }
-    
     public void moveAll(RandomNumberGenerator generator) {
         for (Car car : cars) {
             car.move(generator.generate());

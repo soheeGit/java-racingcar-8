@@ -10,6 +10,9 @@ public class ErrorMessage {
     public static final String INVALID_ATTEMPT_COUNT = "시도 횟수는 양수여야 합니다.";
     public static final String INVALID_NUMBER_FORMAT = "시도 횟수는 숫자여야 합니다.";
 
+    // 랜덤값 검증
+    public static final String INVALID_RANDOM_NUMBER = "무작위 값은 0~9 사이여야 합니다.";
+
     private ErrorMessage() {
     }
 }

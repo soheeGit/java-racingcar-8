@@ -68,15 +68,4 @@ public class CarTest {
 
         assertThat(car.getPositionDisplay()).isEqualTo("--");
     }
-
-    @Test
-    @DisplayName("같은 위치에 있는지 확인한다")
-    void isSamePosition() {
-        Car car1 = new Car("pobi");
-        Car car2 = new Car("woni");
-        car1.move(4);
-        car2.move(5);
-
-        assertThat(car1.isSamePosition(car2)).isTrue();
-    }
 }

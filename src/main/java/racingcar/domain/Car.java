@@ -16,7 +16,7 @@ public class Car {
     }
     
     public String getName() {
-        return name.getValue();
+        return name.value();
     }
     
     public int getPosition() {
@@ -25,9 +25,5 @@ public class Car {
     
     public String getPositionDisplay() {
         return position.toDisplay();
-    }
-    
-    public boolean isSamePosition(Car other) {
-        return this.position.isSamePosition(other.position);
     }
 }

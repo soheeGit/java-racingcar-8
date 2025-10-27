@@ -11,7 +11,7 @@ public class NameTest {
     @DisplayName("이름을 생성한다")
     void createName() {
         Name name = new Name("pobi");
-        assertThat(name.getValue()).isEqualTo("pobi");
+        assertThat(name.value()).isEqualTo("pobi");
     }
 
     @Test

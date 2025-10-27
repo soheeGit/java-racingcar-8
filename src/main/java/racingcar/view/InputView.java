@@ -1,6 +1,8 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.validator.Validator;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,18 +27,7 @@ public class InputView {
     public int readAttemptCount() {
         System.out.println(ATTEMPT_COUNT_INPUT_MESSAGE);
         String input = Console.readLine();
-        return parseAttemptCount(input);
-    }
-    
-    private int parseAttemptCount(String input) {
-        try {
-            int number = Integer.parseInt(input);
-            if(number <= 0) {
-                throw new IllegalArgumentException("시도 횟수는 양수여야 합니다.");
-            }
-            return number;
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("시도 횟수는 숫자여야 합니다.");
-        }
+        Validator.validateAttemptCount(input);
+        return Integer.parseInt(input);
     }
 }
