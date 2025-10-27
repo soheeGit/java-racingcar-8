@@ -1,18 +1,27 @@
 package racingcar.domain;
 
-import racingcar.validator.Validator;
+import racingcar.exception.ErrorMessage;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
     
     public Cars(List<String> names) {
-        Validator.validateDuplication(names);
+        validateDuplication(names);
         this.cars = names.stream()
                 .map(Car::new)
                 .collect(Collectors.toList());
+    }
+
+    private void validateDuplication(List<String> names) {
+        Set<String> uniqueNames = new HashSet<>(names);
+        if (uniqueNames.size() != names.size()) {
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NAME);
+        }
     }
 
     public void moveAll(RandomNumberGenerator generator) {
