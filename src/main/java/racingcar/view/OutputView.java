@@ -6,19 +6,23 @@ import racingcar.domain.Winners;
 
 public class OutputView {
 
+    private static final String RESULT_HEADER_MESSAGE = "실행 결과";
+    private static final String WINNER_PREFIX = "최종 우승자";
+    private static final String NAME_POSITION_DELIMITER = " : ";
+
     public void printResultHeader() {
         System.out.println();
-        System.out.println("실행 결과");
+        System.out.println(RESULT_HEADER_MESSAGE);
     }
     
     public void printRoundResult(Cars cars) {
         for (Car car : cars.getCars()) {
-            System.out.println(car.getName() + " : " + car.getPositionDisplay());
+            System.out.println(car.getName() + NAME_POSITION_DELIMITER + car.getPositionDisplay());
         }
         System.out.println();
     }
     
     public void printWinners(Winners winners) {
-        System.out.println("최종 우승자 : " + winners);
+        System.out.println(WINNER_PREFIX + NAME_POSITION_DELIMITER + winners);
     }
 }

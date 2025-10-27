@@ -30,7 +30,7 @@ public class Validator {
     public static void validateAttemptCount(String input) {
         try {
             int number = Integer.parseInt(input);
-            if(number <= 0) {
+            if(number <= MIN_NUMBER) {
                 throw new IllegalArgumentException(ErrorMessage.INVALID_ATTEMPT_COUNT);
             }
         } catch (NumberFormatException e) {
