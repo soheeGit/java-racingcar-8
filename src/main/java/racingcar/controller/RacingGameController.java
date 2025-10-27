@@ -23,20 +23,24 @@ public class RacingGameController {
 
     public void run() {
         List<String> carNames = inputView.readCarNames();
-
         int attemptCount = inputView.readAttemptCount();
 
         Cars cars = new Cars(carNames);
-
         RacingGame game = new RacingGame(cars, generator);
 
-        outputView.printResultHeader();
+        playGame(game, attemptCount);
+        printWinner(game);
+    }
 
+    private void playGame(RacingGame game, int attemptCount) {
+        outputView.printResultHeader();
         for (int i = 0; i < attemptCount; i++) {
             game.playRound();
             outputView.printRoundResult(game.getCars());
         }
+    }
 
+    private void printWinner(RacingGame game) {
         Winners winners = game.findWinners();
         outputView.printWinners(winners);
     }
