@@ -21,8 +21,4 @@ public class Position {
     public String toDisplay() {
         return POSITION_MARK.repeat(value);
     }
-    
-    public boolean isSamePosition(Position other) {
-        return this.value == other.value;
-    }
 }

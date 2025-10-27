@@ -48,15 +48,4 @@ public class PositionTest {
         Position position = new Position();
         assertThat(position.toDisplay()).isEqualTo("");
     }
-
-    @Test
-    @DisplayName("같은 위치인지 확인한다")
-    void isSamePosition() {
-        Position position1 = new Position();
-        Position position2 = new Position();
-        position1.increase();
-        position2.increase();
-
-        assertThat(position1.isSamePosition(position2)).isTrue();
-    }
 }
