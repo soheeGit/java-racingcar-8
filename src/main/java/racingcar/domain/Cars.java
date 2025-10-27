@@ -31,7 +31,7 @@ public class Cars {
     }
     
     public List<Car> getCars() {
-        return cars;
+        return List.copyOf(cars);
     }
     
     public Winners findWinners() {
